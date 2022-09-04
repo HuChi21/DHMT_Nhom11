@@ -159,7 +159,7 @@ void MatPhang(GLfloat x, GLfloat y, GLfloat z, mat4 mt) {
 	glUniformMatrix4fv(projection_loc, 1, GL_TRUE, p);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 }
-#pragma region Nhà
+#pragma region Gian hàng
 /*------------------------Tường---------------------------------- -*/
 void tuong1_3(GLfloat x, GLfloat y, GLfloat z)
 {
@@ -669,53 +669,10 @@ void Container() {
 
 	instance = instance * Translate(0, trans2, 0)* Translate(-0.01, 0.08, -0.038) * RotateY(theta_Matrix[5]);
 	MatPhang(0.12, 0.07, 0.07, instance);
-
-	//instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.01, 0.18, 0.038);
-	//MatPhang(0.12, 0.07, 0.07, instance);
-
-	//instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.13, 0.25, 0.0) * RotateY(90);
-	//MatPhang(0.12, 0.07, 0.07, instance);
-
-	//instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.05, 0.25, 0.0) * RotateY(90);
-	//MatPhang(0.12, 0.07, 0.07, instance);
-
-	//instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.10, 0.32, 0.0);
-	//MatPhang(0.12, 0.07, 0.07, instance);
-
 }
 
 void DisplayStand()
 {
-	//	//kệ để thuyền
-	//	instance = Translate(-0.15, -0.07, 0) * RotateY(90);
-	//	MatPhang(0.06, 0.1, 0.02, instance);//kedotrai
-	//
-	//	instance = Translate(0.15, -0.07, 0) * RotateY(90);
-	//	MatPhang(0.06, 0.1, 0.02, instance);//kedophai
-	//
-	//	instance = Translate(0, -0.07, 0);
-	//	MatPhang(0.29, 0.05, 0.01, instance);//thanhngang
-	//
-	////bantrungbay
-	//	instance = Translate(0, -0.14, 0);
-	//	MatPhang(0.899, 0.02, 0.99, instance); //matbantren
-	//
-	//	instance = Translate(0.45, -0.17, 0) * RotateZ(40);
-	//	MatPhang(0.02, 0.08, 1.0, instance);//canhbanphai
-	//
-	//	instance = Translate(-0.45, -0.17, 0) * RotateZ(320);
-	//	MatPhang(0.02, 0.08, 1.0, instance);//canhbantrai
-	//
-	//	instance = Translate(0, -0.17, -0.5) * RotateX(40);
-	//	MatPhang(0.9, 0.08, 0.02, instance);//canhbansau
-	//
-	//	instance = Translate(0, -0.17, 0.5) * RotateX(320);
-	//	MatPhang(0.9, 0.08, 0.02, instance);//canhbantruoc
-	//
-	//	instance = Translate(0, -0.2, 0);
-	//	MatPhang(0.95, 0.01, 1.05, instance);//matbanduoi
-
-	//chân kệ
 	for (int i = 0; i <= 90; i++)
 	{
 		instance = Translate(0.0, 0, 0.0) * Translate(0.57, -0.44, 0.35) * Translate(0,-0.075,0) ;
@@ -727,8 +684,6 @@ void DisplayStand()
 		instance = instance * Translate(-0.2, 0, 0);
 		MatPhang(0.02, 0.05, 0.08, instance);
 
-		//instance = Translate(0.0, 0.0, 0.0) * Translate(-0.3, -0.353, -0.3) * RotateY(i);
-		//MatPhang(0.06, 0.3, 0.06, instance);
 	}
 }
 
@@ -743,7 +698,6 @@ void thuyen_Chinh()
 }
 
 #pragma endregion
-
 
 mat4 tran;
 #pragma region Hà
@@ -826,7 +780,136 @@ void thuyen_Ha() {
 
 #pragma endregion
 
-#pragma region Giá đỡ
+#pragma region Ngân
+/*-------------------------Tau_Ngan-----------------------------*/
+const GLfloat V_LENGTH = 0.02775 * sqrt(2) * 2, V_HEIGHT = 0.03 * sqrt(2) * 2, V_WDIE = 0.04 * 2;
+const GLfloat V1_LENGTH = 0.0278 * sqrt(2) * 2, V1_HEIGHT = 0.0325 * sqrt(2) * 2, V1_WDIE = 0.04 * 2;
+const GLfloat T_LENGTH = 0.15 * 2, T_HEIGHT = 0.04 * 2, T_WDIE = 0.005 * 2;
+const GLfloat D_LENGTH = 0.15 * 2, D_HEIGHT = 0.005 * 2, D_WDIE = 0.04 * 2;
+const GLfloat M_LENGTH = 0.0375 * sqrt(2) * 2, M_HEIGHT = 0.005 * 2, M_WDIE = 0.03 * 2;
+
+const GLfloat S_LENGTH = 0.02775 * sqrt(2) * 2, S_HEIGHT = 0.005 * 2, S_WDIE = 0.04 * 2;
+const GLfloat KT_LENGTH = 0.1 * 2, KT_HEIGHT = 0.02 * 2, KT_WDIE = 0.005 * 2;
+const GLfloat KTS_LENGTH = 0.005 * 2, KTS_HEIGHT = 0.02 * 2, KTS_WDIE = 0.035 * 2;
+const GLfloat N_LENGTH = 0.1 * 2, N_HEIGHT = 0.005 * 2, N_WDIE = 0.035 * 2;
+const GLfloat O_LENGTH = 0.005 * 2, O_HEIGHT = 0.03 * 2, O_WDIE = 0.01 * 2;
+
+void thanTau_ngan(GLfloat z) {
+	mat4 ins = tran * Translate(0, 0, z);
+	MatPhang(T_LENGTH, T_HEIGHT, T_WDIE, ins);
+}
+
+void dayTau_ngan(GLfloat y) {
+	mat4 ins = tran * Translate(0, y, 0);
+	MatPhang(D_LENGTH, D_HEIGHT, D_WDIE, ins);
+}
+void dayTau_ngan2(GLfloat y) {
+	mat4 ins = tran * Translate(0, y, 0);
+	MatPhang(D_LENGTH, D_HEIGHT, D_WDIE, ins);
+}
+
+void muiTau_ngan(GLfloat x, GLfloat y) {
+	mat4 ins = tran * Translate(x, y, 0) * RotateZ(45) * Translate(M_LENGTH / 2, 0, 0);
+	MatPhang(M_LENGTH, M_HEIGHT, M_WDIE, ins);
+}
+
+void muiTau1_ngan(GLfloat x, GLfloat y) {
+	mat4 ins = tran * Translate(x, y, 0) * RotateZ(-45) * Translate(-M_LENGTH / 2, 0, 0);
+	MatPhang(M_LENGTH, M_HEIGHT, M_WDIE, ins);
+}
+
+//GLfloat d = 0;
+void vanTau_ngan(GLfloat x, GLfloat y, GLfloat z) {
+	mat4 ins = tran * Translate(x, y, z) * RotateX(0) * Translate(M_LENGTH / 2, 0, 0);
+	MatPhang(V_LENGTH, V_HEIGHT, V_WDIE, ins);
+}
+
+void vanTau1_ngan(GLfloat x, GLfloat y, GLfloat z) {
+	mat4 ins = tran * Translate(x, y, z) * RotateX(180) * Translate(M_LENGTH / 2, 0, 0);
+	MatPhang(V1_LENGTH, V1_HEIGHT, V1_WDIE, ins);
+}
+
+void sanTau_ngan(GLfloat y) {
+	mat4 ins = tran * Translate(0, y, 0);
+	MatPhang(D_LENGTH, D_HEIGHT, D_WDIE, ins);
+}
+
+void sanMuiTau_ngan(GLfloat x, GLfloat y) {
+	mat4 ins = tran * Translate(x, y, 0);
+	MatPhang(S_LENGTH, S_HEIGHT, S_WDIE, ins);
+}
+
+void khoangTau_ngan(GLfloat y, GLfloat z, GLfloat a) {
+	mat4 ins = tran * Translate(0, y, z);
+	MatPhang(KT_LENGTH * a, KT_HEIGHT * a, KT_WDIE * a, ins);
+}
+
+void khoangTau1_ngan(GLfloat x, GLfloat y, GLfloat z, GLfloat a) {
+	mat4 ins = tran * Translate(x, y, z);
+	MatPhang(KTS_LENGTH * a, KTS_HEIGHT * a, KTS_WDIE * a, ins);
+}
+
+void khoangTau2_ngan(GLfloat y, GLfloat a) {
+	mat4 ins = tran * Translate(0, y, 0) * RotateX(180);
+	MatPhang(N_LENGTH * a, N_HEIGHT * a, N_WDIE * a, ins);
+}
+
+void ongKhoi_ngan(GLfloat x, GLfloat y, GLfloat a) {
+	mat4 ins = tran * Translate(x, y, 0) * RotateY(a);
+	MatPhang(O_LENGTH, O_HEIGHT, O_WDIE, ins);
+}
+
+void thuyen_Ngan() {
+	tran = Translate(-0.25, -0.51, -0.1);
+
+	thanTau_ngan(0.02);
+	thanTau_ngan(-0.02);
+
+	dayTau_ngan(-(T_HEIGHT - D_HEIGHT) / 2);
+
+	muiTau_ngan(D_LENGTH / 2 - 0.005, -(T_HEIGHT - M_HEIGHT) / 2);
+	muiTau1_ngan(-D_LENGTH / 2 + 0.005, -(T_HEIGHT - M_HEIGHT) / 2);
+
+	vanTau_ngan(D_LENGTH / 2 - 0.02, 0.005, -T_WDIE / 2);
+	vanTau_ngan(D_LENGTH / 2 - 0.02, 0.005, M_WDIE - T_WDIE / 2);
+	vanTau1_ngan(-D_LENGTH / 2 - V1_LENGTH - 0.01, 0.005, T_WDIE / 2);
+	vanTau1_ngan(-D_LENGTH / 2 - V1_LENGTH - 0.01, 0.005, -M_WDIE + T_WDIE / 2);
+
+	sanTau_ngan((T_HEIGHT - D_HEIGHT) / 2 - 0.005);
+
+	sanMuiTau_ngan(-D_LENGTH / 2 - V_LENGTH / 2 + 0.005, V_LENGTH / 2 + 0.005);
+	sanMuiTau_ngan(D_LENGTH / 2 + V_LENGTH / 2 - 0.005, V_LENGTH / 2 + 0.005);
+
+	khoangTau_ngan(T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005, 0.03, 1);
+	khoangTau_ngan(T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005, -0.03, 1);
+
+	khoangTau1_ngan(KT_LENGTH / 2 - KTS_LENGTH / 2, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005, 0, 1);
+	khoangTau1_ngan(-KT_LENGTH / 2 + KTS_LENGTH / 2, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005, 0, 1);
+
+	khoangTau2_ngan(T_HEIGHT / 2 - 0.005 + KT_HEIGHT, 1);
+
+	khoangTau_ngan(T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (5 * KT_HEIGHT) / 6, 0.03 * 0.83, 0.83);
+	khoangTau_ngan(T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (5 * KT_HEIGHT) / 6, -0.03 * 0.83, 0.83);
+	khoangTau1_ngan(KT_LENGTH * 0.83 / 2 - (KTS_LENGTH * 0.83) / 2, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (5 * KT_HEIGHT) / 6, 0, 0.83);
+	khoangTau1_ngan(-KT_LENGTH * 0.83 / 2 + (KTS_LENGTH * 0.83) / 2, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (5 * KT_HEIGHT) / 6, 0, 0.83);
+
+	khoangTau2_ngan(T_HEIGHT / 2 - 0.005 + KT_HEIGHT + (5 * KT_HEIGHT) / 6, 0.83);
+
+	for (int i = 0; i < 360; i++) {
+		ongKhoi_ngan(0, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (7 * KT_HEIGHT) / 6 + O_HEIGHT / 2, i);
+	}
+
+	for (int i = 0; i < 360; i++) {
+		ongKhoi_ngan(0.06, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (7 * KT_HEIGHT) / 6 + O_HEIGHT / 2, i);
+	}
+
+	for (int i = 0; i < 360; i++) {
+		ongKhoi_ngan(-0.06, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (7 * KT_HEIGHT) / 6 + O_HEIGHT / 2, i);
+	}
+}
+#pragma endregion
+
+#pragma region Kệ
 /*------------------------Kệ---------------------------------- -*/
 void ChanGiaT(GLfloat x, GLfloat y, GLfloat z) {
 	ins = Translate(x, y, z);
@@ -837,7 +920,7 @@ void ThanhNgang1(GLfloat x, GLfloat y, GLfloat z) {
 	MatPhang(1.4, 0.05, 0.5, ins);
 }
 
-void giaDo() {
+void Ke() {
 	ChanGiaT(-0.9, -0.3, -0.3);
 	ChanGiaT(0.5, -0.3, -0.3);
 	ThanhNgang1(-0.2, 0.375, -0.3);
@@ -955,7 +1038,7 @@ void quaythungan()
 }
 #pragma endregion
 
-void nha()
+void gianhang()
 {
 	tuong1_3(0, -1.01, 0.5);
 	tuong1_3(0, 1.255, 0.5);
@@ -967,8 +1050,9 @@ void nha()
 	thuyen_HongAnh();
 	thuyen_Chinh();
 	thuyen_Ha();
-	
-	giaDo();
+	thuyen_Ngan();
+
+	Ke();
 	quatTran();
 	quaythungan();
 	ban();
@@ -986,7 +1070,7 @@ void display(void)
 	//glUniformMatrix4fv(loc_modelMatrix, 1, GL_TRUE, ctm);
 
 	//glDrawArrays( GL_TRIANGLES, 0, NumPoints );    /*Vẽ các tam giác*/
-	nha();
+	gianhang();
 }
 
 
@@ -1161,25 +1245,6 @@ void keyboard(unsigned char key, int x, int y)
 	}
 	glutPostRedisplay();
 }
-//void mouse(int button, int state, int x, int y)
-//{
-//	if (state == GLUT_DOWN) {
-//		switch (button) {
-//		case GLUT_LEFT_BUTTON: Axis = Xaxis; break;
-//		case GLUT_MIDDLE_BUTTON: Axis = Yaxis; break;
-//		case GLUT_RIGHT_BUTTON: Axis = Zaxis; break;
-//		}
-//	}
-//}
-
-//void spinCube(void)
-//{
-//	Theta[Axis] += 0.01;
-//	if (Theta[Axis] > 360.0) {
-//		Theta[Axis] -= 360.0;
-//	}
-//	glutPostRedisplay();
-//}
 
 void SpinPropeller(void)
 {
