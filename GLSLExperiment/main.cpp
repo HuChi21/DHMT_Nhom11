@@ -508,7 +508,7 @@ void bacthuyen3(GLfloat w, GLfloat l, GLfloat h) {
 	MatPhang(0.06f, 0.03f, 0.2, instance);
 }
 void ongkhoi1(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
+	instance = Translate(w, l, h) * RotateY(theta_Matrix[3]);
 	MatPhang(0.02f, 0.07f, 0.04, instance);
 }
 void thuyen_HongAnh() {
@@ -536,7 +536,7 @@ GLfloat trans = 0;
 #pragma region Chính
 void BottomShip()
 {
-	instance = Translate(0, trans, 0) * Translate(0.57, -0.44, 0.35) * Translate(0.0, -0.01, 0.0) * RotateY(theta_Matrix[3]);
+	instance = Translate(0, trans, 0) * Translate(0.57, -0.44, 0.35) * Translate(0.0, -0.01, 0.0) ;
 	MatPhang(0.5, 0.024, 0.1, instance);//dayduoi1
 	instance = instance * Translate(0, 0, 0) * Translate(-0.258, 0.07, 0.0) * RotateZ(-45) * RotateY(45);
 	MatPhang(0.11, 0.11, 0.11, instance);//dayduoi2
@@ -613,14 +613,7 @@ void Funnel()
 {
 	for (int i = 0; i <= 90; i++)
 	{
-		instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.26, 0.25, 0.0) * RotateY(i);
-		MatPhang(0.006, 0.3, 0.006, instance);
-		instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.26, 0.4, 0.0) * RotateY(i);
-		MatPhang(0.015, 0.015, 0.015, instance);
-
-		instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.26, 0.38, 0.0) * RotateX(90) * RotateY(i);
-		MatPhang(0.006, 0.15, 0.006, instance);
-
+		
 		instance = RotateZ(-1) * Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(0.18, 0.48, 0.02) * RotateY(i);
 		MatPhang(0.025, 0.1, 0.025, instance);//ong khoi 1
 
@@ -628,7 +621,44 @@ void Funnel()
 		MatPhang(0.025, 0.1, 0.025, instance);//ong khoi 2
 	}
 }
+void Sail() {
+	for (int i = 0;i <= 90;i++) {
+		instance = Translate(0, trans, 0) * Translate(0.57, -0.44, 0.35) * Translate(-0.26, 0.25, 0.0) * RotateY(i);
+		MatPhang(0.006, 0.3, 0.006, instance);
+		instance = Translate(0, trans, 0) * Translate(0.57, -0.44, 0.35) * Translate(-0.26, 0.4, 0.0) * RotateY(i);
+		MatPhang(0.015, 0.015, 0.015, instance);	
+	}
+#pragma region Sail
+	//1st_sail
+	instance = Translate(0, trans, 0) * Translate(0.31, -0.05, 0.35) * RotateY(theta_Matrix[3]);
+	MatPhang(0.01, 0.01, 0.09, instance);
+	instance = instance * Translate(-0.003, -0.01, 0);	MatPhang(0.01, 0.01, 0.093, instance);
+	instance = instance * Translate(-0.003, -0.01, 0);	MatPhang(0.01, 0.01, 0.096, instance);
+	instance = instance * Translate(-0.003, -0.01, 0);	MatPhang(0.01, 0.01, 0.099, instance);
 
+
+	instance = instance * Translate(-0.002, -0.01, 0);	MatPhang(0.01, 0.01, 0.10, instance);
+	instance = instance * Translate(-0.002, -0.01, 0);	MatPhang(0.01, 0.01, 0.103, instance);
+	instance = instance * Translate(-0.002, -0.01, 0);	MatPhang(0.01, 0.01, 0.106, instance);
+	instance = instance * Translate(-0.002, -0.01, 0);	MatPhang(0.01, 0.01, 0.109, instance);
+
+	instance = instance * Translate(-0.001, -0.01, 0);	MatPhang(0.01, 0.01, 0.111, instance);
+
+	instance = instance * Translate(0.002, -0.01, 0);	MatPhang(0.01, 0.01, 0.113, instance);
+	instance = instance * Translate(0.002, -0.01, 0);	MatPhang(0.01, 0.01, 0.116, instance);
+	instance = instance * Translate(0.002, -0.01, 0);	MatPhang(0.01, 0.01, 0.119, instance);
+	instance = instance * Translate(0.003, -0.01, 0);	MatPhang(0.01, 0.01, 0.12, instance);
+
+	instance = instance * Translate(0.003, -0.01, 0);	MatPhang(0.01, 0.01, 0.12, instance);
+	instance = instance * Translate(0.002, -0.01, 0);	MatPhang(0.01, 0.01, 0.119, instance);
+	instance = instance * Translate(0.002, -0.01, 0);	MatPhang(0.01, 0.01, 0.113, instance);
+	instance = instance * Translate(0.002, -0.01, 0);	MatPhang(0.01, 0.01, 0.11, instance);
+
+	
+#pragma endregion
+
+
+}
 void Container() {
 	instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.13, 0.18, -0.038);
 	MatPhang(0.12, 0.07, 0.07, instance);
@@ -706,6 +736,7 @@ void thuyen_Chinh()
 	BottomShip();
 	MiddleShip();
 	Funnel();
+	Sail();
 	Container();
 	DisplayStand();
 }
