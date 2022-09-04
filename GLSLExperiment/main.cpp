@@ -31,7 +31,7 @@ int Axis = Xaxis;
 GLfloat Theta[NumAxes] = { 0.0, 0.0, 0.0 };
 GLfloat The[NumAxes] = { 0.0, 0.0, 0.0 };
 mat4 ctm;
-GLfloat theta_Matrix[5] = { 0,0,0 };
+GLfloat theta_Matrix[6] = { 0,0,0 };
 GLuint loc_modelMatrix;
 GLuint projection_loc;
 GLuint loc_model;
@@ -533,6 +533,7 @@ void thuyen_HongAnh() {
 #pragma endregion
 
 GLfloat trans = 0;
+GLfloat trans2 = 0;
 #pragma region Chính
 void BottomShip()
 {
@@ -660,26 +661,26 @@ void Sail() {
 
 }
 void Container() {
-	instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.13, 0.18, -0.038);
+	instance = Translate(0, trans, 0) * Translate(0.57, -0.44, 0.35) * Translate(-0.13, 0.18, -0.038) ;
 	MatPhang(0.12, 0.07, 0.07, instance);
 
-	instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.13, 0.18, 0.038);
+	instance = instance * Translate(0, 0, 0.08);
 	MatPhang(0.12, 0.07, 0.07, instance);
 
-	instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.01, 0.18, -0.038);
+	instance = instance * Translate(0, trans2, 0)* Translate(-0.01, 0.08, -0.038) * RotateY(theta_Matrix[5]);
 	MatPhang(0.12, 0.07, 0.07, instance);
 
-	instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.01, 0.18, 0.038);
-	MatPhang(0.12, 0.07, 0.07, instance);
+	//instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.01, 0.18, 0.038);
+	//MatPhang(0.12, 0.07, 0.07, instance);
 
-	instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.13, 0.25, 0.0) * RotateY(90);
-	MatPhang(0.12, 0.07, 0.07, instance);
+	//instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.13, 0.25, 0.0) * RotateY(90);
+	//MatPhang(0.12, 0.07, 0.07, instance);
 
-	instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.05, 0.25, 0.0) * RotateY(90);
-	MatPhang(0.12, 0.07, 0.07, instance);
+	//instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.05, 0.25, 0.0) * RotateY(90);
+	//MatPhang(0.12, 0.07, 0.07, instance);
 
-	instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.10, 0.32, 0.0);
-	MatPhang(0.12, 0.07, 0.07, instance);
+	//instance = Translate(0, trans, 0) * Translate(0.57,-0.44,0.35) * Translate(-0.10, 0.32, 0.0);
+	//MatPhang(0.12, 0.07, 0.07, instance);
 
 }
 
@@ -1049,7 +1050,20 @@ void keyboard(unsigned char key, int x, int y)
 	case 'M':
 		trans -= 0.05;
 		if (trans < 0 ) trans += 0.05;
-		
+		break;
+	case 'n':
+		trans2 += 0.05;
+		if (trans2 > 0.5 && trans2 <= 2)
+			trans2 -= 0.05;
+
+		break;
+	case 'N':
+		trans2 -= 0.05;
+		if (trans2 < 0) trans2 += 0.05;
+		break;
+	case ',':
+		theta_Matrix[5] += 5;
+		if (theta_Matrix[5] > 360) theta_Matrix[3] -= dr;
 		break;
 	case 'a': {
 		theta_Matrix[0] += 5;
