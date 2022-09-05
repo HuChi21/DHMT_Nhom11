@@ -781,133 +781,72 @@ void thuyen_Ha() {
 #pragma endregion
 
 #pragma region Ngân
-/*-------------------------Tau_Ngan-----------------------------*/
-const GLfloat V_LENGTH = 0.02775 * sqrt(2) * 2, V_HEIGHT = 0.03 * sqrt(2) * 2, V_WDIE = 0.04 * 2;
-const GLfloat V1_LENGTH = 0.0278 * sqrt(2) * 2, V1_HEIGHT = 0.0325 * sqrt(2) * 2, V1_WDIE = 0.04 * 2;
-const GLfloat T_LENGTH = 0.15 * 2, T_HEIGHT = 0.04 * 2, T_WDIE = 0.005 * 2;
-const GLfloat D_LENGTH = 0.15 * 2, D_HEIGHT = 0.005 * 2, D_WDIE = 0.04 * 2;
-const GLfloat M_LENGTH = 0.0375 * sqrt(2) * 2, M_HEIGHT = 0.005 * 2, M_WDIE = 0.03 * 2;
-
-const GLfloat S_LENGTH = 0.02775 * sqrt(2) * 2, S_HEIGHT = 0.005 * 2, S_WDIE = 0.04 * 2;
-const GLfloat KT_LENGTH = 0.1 * 2, KT_HEIGHT = 0.02 * 2, KT_WDIE = 0.005 * 2;
-const GLfloat KTS_LENGTH = 0.005 * 2, KTS_HEIGHT = 0.02 * 2, KTS_WDIE = 0.035 * 2;
-const GLfloat N_LENGTH = 0.1 * 2, N_HEIGHT = 0.005 * 2, N_WDIE = 0.035 * 2;
-const GLfloat O_LENGTH = 0.005 * 2, O_HEIGHT = 0.03 * 2, O_WDIE = 0.01 * 2;
-
-void thanTau_ngan(GLfloat z) {
-	mat4 ins = tran * Translate(0, 0, z);
-	MatPhang(T_LENGTH, T_HEIGHT, T_WDIE, ins);
+void day1(GLfloat w, GLfloat l, GLfloat h) {
+	instance = Translate(w, l, h);
+	MatPhang(0.5, 0.01, 0.2, instance);
 }
-
-void dayTau_ngan(GLfloat y) {
-	mat4 ins = tran * Translate(0, y, 0);
-	MatPhang(D_LENGTH, D_HEIGHT, D_WDIE, ins);
+void day2(GLfloat w, GLfloat l, GLfloat h) {
+	instance = Translate(w, l, h);
+	MatPhang(0.52, 0.01, 0.2, instance);
 }
-void dayTau_ngan2(GLfloat y) {
-	mat4 ins = tran * Translate(0, y, 0);
-	MatPhang(D_LENGTH, D_HEIGHT, D_WDIE, ins);
+void day3(GLfloat w, GLfloat l, GLfloat h) {
+	instance = Translate(w, l, h);
+	MatPhang(0.54, 0.01, 0.2, instance);
 }
-
-void muiTau_ngan(GLfloat x, GLfloat y) {
-	mat4 ins = tran * Translate(x, y, 0) * RotateZ(45) * Translate(M_LENGTH / 2, 0, 0);
-	MatPhang(M_LENGTH, M_HEIGHT, M_WDIE, ins);
+void day4(GLfloat w, GLfloat l, GLfloat h) {
+	instance = Translate(w, l, h);
+	MatPhang(0.56, 0.01, 0.2, instance);
 }
-
-void muiTau1_ngan(GLfloat x, GLfloat y) {
-	mat4 ins = tran * Translate(x, y, 0) * RotateZ(-45) * Translate(-M_LENGTH / 2, 0, 0);
-	MatPhang(M_LENGTH, M_HEIGHT, M_WDIE, ins);
+void day5(GLfloat w, GLfloat l, GLfloat h) {
+	instance = Translate(w, l, h);
+	MatPhang(0.58, 0.01, 0.2, instance);
 }
-
-//GLfloat d = 0;
-void vanTau_ngan(GLfloat x, GLfloat y, GLfloat z) {
-	mat4 ins = tran * Translate(x, y, z) * RotateX(0) * Translate(M_LENGTH / 2, 0, 0);
-	MatPhang(V_LENGTH, V_HEIGHT, V_WDIE, ins);
+void day6(GLfloat w, GLfloat l, GLfloat h) {
+	instance = Translate(w, l, h);
+	MatPhang(0.60, 0.01, 0.2, instance);
 }
-
-void vanTau1_ngan(GLfloat x, GLfloat y, GLfloat z) {
-	mat4 ins = tran * Translate(x, y, z) * RotateX(180) * Translate(M_LENGTH / 2, 0, 0);
-	MatPhang(V1_LENGTH, V1_HEIGHT, V1_WDIE, ins);
+void day7(GLfloat w, GLfloat l, GLfloat h) {
+	instance = Translate(w, l, h);
+	MatPhang(0.62, 0.01, 0.2, instance);
 }
-
-void sanTau_ngan(GLfloat y) {
-	mat4 ins = tran * Translate(0, y, 0);
-	MatPhang(D_LENGTH, D_HEIGHT, D_WDIE, ins);
+void than1(GLfloat w, GLfloat l, GLfloat h) {
+	instance = Translate(w, l, h);
+	MatPhang(0.5, 0.1, 0.15, instance);
 }
-
-void sanMuiTau_ngan(GLfloat x, GLfloat y) {
-	mat4 ins = tran * Translate(x, y, 0);
-	MatPhang(S_LENGTH, S_HEIGHT, S_WDIE, ins);
+void than2(GLfloat w, GLfloat l, GLfloat h) {
+	instance = Translate(w, l, h);
+	MatPhang(0.4, 0.1, 0.1, instance);
 }
-
-void khoangTau_ngan(GLfloat y, GLfloat z, GLfloat a) {
-	mat4 ins = tran * Translate(0, y, z);
-	MatPhang(KT_LENGTH * a, KT_HEIGHT * a, KT_WDIE * a, ins);
+void khoi1(GLfloat w, GLfloat l, GLfloat h) {
+	instance = Translate(w, l, h);
+	MatPhang(0.03, 0.05, 0.03, instance);
 }
-
-void khoangTau1_ngan(GLfloat x, GLfloat y, GLfloat z, GLfloat a) {
-	mat4 ins = tran * Translate(x, y, z);
-	MatPhang(KTS_LENGTH * a, KTS_HEIGHT * a, KTS_WDIE * a, ins);
+void day() {
+	day1(0, 0.4, -0.15);
+	day2(0, 0.41, -0.15);
+	day3(0, 0.42, -0.15);
+	day4(0, 0.43, -0.15);
+	day5(0, 0.44, -0.15);
+	day6(0, 0.45, -0.15);
+	day7(0, 0.46, -0.15);
 }
-
-void khoangTau2_ngan(GLfloat y, GLfloat a) {
-	mat4 ins = tran * Translate(0, y, 0) * RotateX(180);
-	MatPhang(N_LENGTH * a, N_HEIGHT * a, N_WDIE * a, ins);
+void than() {
+	than1(0, 0.47, -0.15);
+	than2(0, 0.55, -0.15);
 }
-
-void ongKhoi_ngan(GLfloat x, GLfloat y, GLfloat a) {
-	mat4 ins = tran * Translate(x, y, 0) * RotateY(a);
-	MatPhang(O_LENGTH, O_HEIGHT, O_WDIE, ins);
+void khoi() {
+	khoi1(-0.05, 0.65, -0.15);
+	khoi1(0.05, 0.65, -0.15);
 }
+void thuyen_ngan() {
 
-void thuyen_Ngan() {
-	tran = Translate(-0.25, -0.51, -0.1);
-
-	thanTau_ngan(0.02);
-	thanTau_ngan(-0.02);
-
-	dayTau_ngan(-(T_HEIGHT - D_HEIGHT) / 2);
-
-	muiTau_ngan(D_LENGTH / 2 - 0.005, -(T_HEIGHT - M_HEIGHT) / 2);
-	muiTau1_ngan(-D_LENGTH / 2 + 0.005, -(T_HEIGHT - M_HEIGHT) / 2);
-
-	vanTau_ngan(D_LENGTH / 2 - 0.02, 0.005, -T_WDIE / 2);
-	vanTau_ngan(D_LENGTH / 2 - 0.02, 0.005, M_WDIE - T_WDIE / 2);
-	vanTau1_ngan(-D_LENGTH / 2 - V1_LENGTH - 0.01, 0.005, T_WDIE / 2);
-	vanTau1_ngan(-D_LENGTH / 2 - V1_LENGTH - 0.01, 0.005, -M_WDIE + T_WDIE / 2);
-
-	sanTau_ngan((T_HEIGHT - D_HEIGHT) / 2 - 0.005);
-
-	sanMuiTau_ngan(-D_LENGTH / 2 - V_LENGTH / 2 + 0.005, V_LENGTH / 2 + 0.005);
-	sanMuiTau_ngan(D_LENGTH / 2 + V_LENGTH / 2 - 0.005, V_LENGTH / 2 + 0.005);
-
-	khoangTau_ngan(T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005, 0.03, 1);
-	khoangTau_ngan(T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005, -0.03, 1);
-
-	khoangTau1_ngan(KT_LENGTH / 2 - KTS_LENGTH / 2, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005, 0, 1);
-	khoangTau1_ngan(-KT_LENGTH / 2 + KTS_LENGTH / 2, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005, 0, 1);
-
-	khoangTau2_ngan(T_HEIGHT / 2 - 0.005 + KT_HEIGHT, 1);
-
-	khoangTau_ngan(T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (5 * KT_HEIGHT) / 6, 0.03 * 0.83, 0.83);
-	khoangTau_ngan(T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (5 * KT_HEIGHT) / 6, -0.03 * 0.83, 0.83);
-	khoangTau1_ngan(KT_LENGTH * 0.83 / 2 - (KTS_LENGTH * 0.83) / 2, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (5 * KT_HEIGHT) / 6, 0, 0.83);
-	khoangTau1_ngan(-KT_LENGTH * 0.83 / 2 + (KTS_LENGTH * 0.83) / 2, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (5 * KT_HEIGHT) / 6, 0, 0.83);
-
-	khoangTau2_ngan(T_HEIGHT / 2 - 0.005 + KT_HEIGHT + (5 * KT_HEIGHT) / 6, 0.83);
-
-	for (int i = 0; i < 360; i++) {
-		ongKhoi_ngan(0, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (7 * KT_HEIGHT) / 6 + O_HEIGHT / 2, i);
-	}
-
-	for (int i = 0; i < 360; i++) {
-		ongKhoi_ngan(0.06, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (7 * KT_HEIGHT) / 6 + O_HEIGHT / 2, i);
-	}
-
-	for (int i = 0; i < 360; i++) {
-		ongKhoi_ngan(-0.06, T_HEIGHT / 2 + KT_HEIGHT / 2 - 0.005 + (7 * KT_HEIGHT) / 6 + O_HEIGHT / 2, i);
-	}
+	day();
+	than();
+	khoi();
 }
 #pragma endregion
+
+
 
 #pragma region Kệ
 /*------------------------Kệ---------------------------------- -*/
@@ -1050,7 +989,7 @@ void gianhang()
 	thuyen_HongAnh();
 	thuyen_Chinh();
 	thuyen_Ha();
-	thuyen_Ngan();
+	thuyen_ngan();
 
 	Ke();
 	quatTran();
@@ -1105,6 +1044,7 @@ void keyboard(unsigned char key, int x, int y)
 		theta_Matrix[0] = 0;
 		theta_Matrix[1] = 0;
 		theta_Matrix[2] = 0;
+		
 		break;
 	case 'k': {
 		quayCanh += 160;
@@ -1125,6 +1065,12 @@ void keyboard(unsigned char key, int x, int y)
 			//	if (Theta[2] > 0.95) Theta[2] = 0;
 			//	glutPostRedisplay();
 			//	break;
+	case '/':
+		trans = 0;
+		trans2 = 0;
+		theta_Matrix[3] = 0;
+		theta_Matrix[5]=0;
+		break;
 	case 'm':
 		trans += 0.05;
 		if (trans > 0.25 && trans <= 2)
@@ -1147,7 +1093,7 @@ void keyboard(unsigned char key, int x, int y)
 		break;
 	case ',':
 		theta_Matrix[5] += 5;
-		if (theta_Matrix[5] > 360) theta_Matrix[3] -= dr;
+		if (theta_Matrix[5] > 360) theta_Matrix[5] -= dr;
 		break;
 	case 'a': {
 		theta_Matrix[0] += 5;
