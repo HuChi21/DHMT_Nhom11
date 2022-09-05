@@ -700,47 +700,56 @@ void thuyen_Chinh()
 #pragma endregion
 
 mat4 tran;
+GLfloat n;
+GLfloat m;
+mat4 chay;
+mat4 dichuyen;
 #pragma region Hà
 /*------------------------Thuyen_Ha---------------------------------- -*/
 void day_tau1(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
+	chay = Translate(n, 0, 0);
+	instance = chay * Translate(w, l, h);
 	MatPhang(0.4, 0.02, 0.2, instance);
 }
 void day_tau2(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
+	chay = Translate(n, 0, 0);
+	instance = chay * Translate(w, l, h);
 	MatPhang(0.44, 0.02, 0.2, instance);
 }
 void day_tau3(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
+	chay = Translate(n, 0, 0);
+	instance = chay * Translate(w, l, h);
 	MatPhang(0.48, 0.02, 0.2, instance);
 }
 void day_tau4(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
+	chay = Translate(n, 0, 0);
+	instance = chay * Translate(w, l, h);
 	MatPhang(0.52, 0.02, 0.2, instance);
 }
 void day_tau5(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
+	chay = Translate(n, 0, 0);
+	instance = chay * Translate(w, l, h);
 	MatPhang(0.56, 0.02, 0.2, instance);
 }
 void cot_tau_1(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
+	chay = Translate(n, 0, 0);
+	instance = chay * Translate(w, l, h);
 	MatPhang(0.02, 0.04, 0.01, instance);
 }
 void mai_che(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
+	chay = Translate(n, 0, 0);
+	instance = chay * Translate(w, l, h);
 	MatPhang(0.38, 0.015, 0.18, instance);
 }
-void de_co(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
+void de_ong(GLfloat w, GLfloat l, GLfloat h) {
+	chay = Translate(n, 0, 0);
+	instance = chay * Translate(w, l, h);
 	MatPhang(0.1, 0.04, 0.1, instance);
 }
-void cot_co(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
-	MatPhang(0.01, 0.14, 0.01, instance);
-}
-void la_co(GLfloat w, GLfloat l, GLfloat h) {
-	instance = Translate(w, l, h);
-	MatPhang(0.06, 0.05, 0.001, instance);
+void ong_khoi(GLfloat w, GLfloat l, GLfloat h) {
+	chay = Translate(n, 0, 0);
+	instance = chay * Translate(w, l, h) * RotateY(Theta[5]);
+	MatPhang(0.03, 0.14, 0.03, instance);
 }
 void day_tau() {
 	day_tau1(0.1, -0.07, -0.3);
@@ -760,22 +769,119 @@ void cot_tau() {
 void mai_che() {
 	mai_che(0.1, 0.06, -0.3);
 }
-void de_co() {
-	de_co(0.1, 0.09, -0.3);
+void de_ong() {
+	de_ong(0.1, 0.09, -0.3);
 }
-void cot_co() {
-	cot_co(0.1, 0.14, -0.3);
-}
-void la_co() {
-	la_co(0.13, 0.185, -0.3);
+void ong_khoi() {
+	ong_khoi(0.1, 0.14, -0.3);
 }
 void thuyen_Ha() {
 	day_tau();
 	cot_tau();
 	mai_che();
-	de_co();
-	cot_co();
-	la_co();
+	de_ong();
+	ong_khoi();
+}
+void day_thuyen1(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.38, 0.02, 0.2, instance);
+}
+void day_thuyen2(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.4, 0.02, 0.2, instance);
+}
+void day_thuyen3(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.42, 0.02, 0.2, instance);
+}
+void day_thuyen4(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.44, 0.02, 0.2, instance);
+}
+void day_thuyen() {
+	day_thuyen1(-0.55, -0.51, -0.25);
+	day_thuyen2(-0.55, -0.49, -0.25);
+	day_thuyen3(-0.55, -0.47, -0.25);
+	day_thuyen4(-0.55, -0.45, -0.25);
+}
+void vien1(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.1, 0.02, 0.2, instance);
+}
+void vien2(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.18, 0.02, 0.2, instance);
+}
+void vien() {
+	vien1(-0.72, -0.43, -0.25);
+	vien2(-0.42, -0.43, -0.25);
+}
+void khoang_thuyen1(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.14, 0.03, 0.16, instance);
+}
+void khoang_thuyen2(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.1, 0.2, 0.1, instance);
+}
+void khoang_thuyen() {
+	khoang_thuyen1(-0.42, -0.4125, -0.25);
+	khoang_thuyen2(-0.425, -0.3875, -0.25);
+}
+void ong_khoi1(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.08, 0.16, 0.05, instance);
+}
+void ong_khoi2(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.08, 0.16, 0.05, instance);
+}
+void ong_khoih() {
+	ong_khoi1(-0.6, -0.43, -0.2);
+	ong_khoi2(-0.6, -0.43, -0.3);
+}
+void truc1(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h) * RotateX(theta_Matrix[4]);
+	MatPhang(0.02, 0.01, 0.01, instance);
+}
+void truc2(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h);
+	MatPhang(0.01, 0.2, 0.01, instance);
+}
+void canh1_3(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h) * RotateX(theta_Matrix[4]);
+	MatPhang(0.001, 0.1, 0.02, instance);
+}
+void canh2_4(GLfloat w, GLfloat l, GLfloat h) {
+	dichuyen = Translate(m, 0, 0);
+	instance = dichuyen * Translate(w, l, h) * RotateX(theta_Matrix[4]);
+	MatPhang(0.001, 0.02, 0.1, instance);
+}
+void quat() {
+	canh1_3(-0.72, -0.3, -0.25);
+	canh2_4(-0.72, -0.3, -0.25);
+	truc1(-0.71, -0.3, -0.25);
+	truc2(-0.7, -0.4, -0.25);
+}
+void tau_Ha() {
+	day_thuyen();
+	vien();
+	khoang_thuyen();
+	ong_khoih();
+	quat();
 }
 
 #pragma endregion
@@ -989,6 +1095,7 @@ void gianhang()
 	thuyen_HongAnh();
 	thuyen_Chinh();
 	thuyen_Ha();
+	tau_Ha();
 	thuyen_ngan();
 
 	Ke();
